@@ -13,6 +13,9 @@ import kord.KordMaster
 
 // https://github.com/kordlib/kord
 suspend fun main() {
+    // fix ktor warning (https://youtrack.jetbrains.com/issue/KTOR-668)
+    System.setProperty("io.ktor.random.secure.random.provider", "DRBG")
+
     val discordEnv = ConfigLoader().loadConfigOrThrow<Environment>(Environment.FILE_PATH)
     val kord = Kord(discordEnv.token)
     val commandHandler = listOf<CommandHandler>(
