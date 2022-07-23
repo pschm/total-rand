@@ -1,7 +1,6 @@
 package kord
 
 import command.CommandService
-import dev.kord.core.Kord
 import dev.kord.core.behavior.channel.createMessage
 import dev.kord.core.behavior.interaction.response.respond
 import dev.kord.core.event.interaction.ChatInputCommandInteractionCreateEvent
@@ -9,12 +8,6 @@ import dev.kord.core.event.message.MessageCreateEvent
 
 // TODO naming
 class KordMaster(private val commandService: CommandService) {
-    suspend fun initializeCommands(kord: Kord) {
-        kord.createGlobalChatInputCommand(
-            "next",
-            "Get a random MW2 map."
-        )
-    }
 
     suspend fun handleInteractionEvent(event: ChatInputCommandInteractionCreateEvent) {
         println("Received Command: ${event.interaction.command.rootName}")

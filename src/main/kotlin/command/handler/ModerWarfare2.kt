@@ -66,4 +66,6 @@ object ModerWarfare2 : CommandHandler {
     }
 
     override fun prefix() = "mw2"
+
+    override fun commands() = commands
 }

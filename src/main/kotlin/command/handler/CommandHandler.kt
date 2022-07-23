@@ -15,4 +15,6 @@ interface CommandHandler {
     fun canHandle(command: Command): Boolean
 
     fun prefix(): String
+
+    fun commands(): List<Command>
 }

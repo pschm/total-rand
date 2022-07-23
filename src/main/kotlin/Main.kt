@@ -22,9 +22,15 @@ suspend fun main() {
         ModerWarfare2,
     )
 
+    // initialize all commands
+    commandHandler.forEach {
+        it.commands().forEach { command ->
+            kord.createGlobalChatInputCommand(command.name, command.description)
+        }
+    }
+
     val commandService = CommandService(commandHandler)
     val kordMaster = KordMaster(commandService)
-    kordMaster.initializeCommands(kord)
 
     kord.on<ChatInputCommandInteractionCreateEvent> { kordMaster.handleInteractionEvent(this) }
     kord.on<MessageCreateEvent> { kordMaster.handleMessageEvent(this) }
